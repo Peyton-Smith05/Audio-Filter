@@ -26,7 +26,7 @@ import scipy.signal as sig
 * plotting x with respect to time for comparison purposes
 """
 
-x, fs = sf.read('sample_data/data_speech.wav')
+x, fs = sf.read('audio_files/data_speech.wav')
 plt.figure(figsize=(8,4))
 t = np.arange(len(x)) / fs
 
@@ -143,7 +143,7 @@ plt.ylabel(r'$y[n]$');
 
 
 # Plotting convolution for comparison
-h, fsh = sf.read('sample_data/data_room_impulse_response.wav')
+h, fsh = sf.read('audio_files/data_room_impulse_response.wav')
 y = np.convolve(h, x)
 #normalizing
 y = max(x) * y / np.max(np.abs(y))
@@ -156,5 +156,5 @@ plt.ylabel(r'$y[k]$');
 """## Writing to output files"""
 
 # Writing two files
-sf.write('multiEchoFilter.wav', y_mul_echo, fs)
-sf.write('FeedbackCombFilter.wav', y_f_comb, fs)
+sf.write('audio_files/multiEchoFilter.wav', y_mul_echo, fs)
+sf.write('audio_files/FeedbackCombFilter.wav', y_f_comb, fs)
